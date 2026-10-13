@@ -191,6 +191,18 @@
     return url;
   }
 
+  /* Register buttons: while registration is open and the form is shown as a
+     button (not embedded), send people straight to the form in a new tab;
+     otherwise scroll to the Registration section. */
+  function regDirect(reg) {
+    return !!(reg && reg.embed === false && regStatus(reg) === "open" && safeUrl(reg.formUrl));
+  }
+  function regLinkAttrs(reg) {
+    return regDirect(reg)
+      ? `href="${esc(safeUrl(reg.formUrl))}" target="_blank" rel="noopener"`
+      : `href="#registration"`;
+  }
+
   /* ------------------------------------------------------------ renderers */
   function sectionHead(s, extraClass) {
     return `<div class="section-head ${extraClass || ""}">
@@ -219,7 +231,7 @@
           <div class="lang-switch" role="group" aria-label="Language">
             ${langs.map((l) => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}">${l.toUpperCase()}</button>`).join("")}
           </div>
-          ${content.sections.registration && content.sections.registration.enabled ? `<a class="btn btn-primary btn-sm" href="#registration">${esc(ui("register"))}</a>` : ""}
+          ${content.sections.registration && content.sections.registration.enabled ? `<a class="btn btn-primary btn-sm" ${regLinkAttrs(content.sections.registration)}>${esc(ui("register"))}</a>` : ""}
           <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="${esc(ui("menu"))}">${ICONS.menu}</button>
         </div>
       </div>
@@ -244,7 +256,7 @@
             ${t(ev.format) ? `<div>${ICONS.ticket}<span>${esc(t(ev.format))}${t(ev.audience) ? `<small>${esc(t(ev.audience))}</small>` : ""}</span></div>` : ""}
           </div>
           <div class="hero-actions">
-            ${reg && reg.enabled ? `<a class="btn btn-primary" href="#registration">${esc(t(ev.ctaPrimary) || ui("register"))} ${ICONS.arrow}</a>` : ""}
+            ${reg && reg.enabled ? `<a class="btn btn-primary" ${regLinkAttrs(reg)}>${esc(t(ev.ctaPrimary) || ui("register"))} ${regDirect(reg) ? ICONS.external : ICONS.arrow}</a>` : ""}
             ${sched && sched.enabled ? `<a class="btn btn-ghost" href="#schedule">${esc(t(ev.ctaSecondary) || ui("program"))}</a>` : ""}
             ${cal ? `<a class="btn btn-ghost" href="${esc(cal)}" target="_blank" rel="noopener">${ICONS.calendar} ${esc(ui("addToCalendar"))}</a>` : ""}
           </div>

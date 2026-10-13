@@ -134,7 +134,7 @@ window.SITE_CONTENT = {
           "label": { "en": "Registration opens", "tr": "Kayıtlar açılıyor" },
           "date": "2026-09-21",
           "time": "",
-          "note": { "en": "Online form on this page", "tr": "Bu sayfadaki çevrimiçi form" },
+          "note": { "en": "Online registration form (Google Forms)", "tr": "Çevrimiçi kayıt formu (Google Forms)" },
           "highlight": false
         },
         {
@@ -264,14 +264,14 @@ window.SITE_CONTENT = {
       "eyebrow": { "en": "Registration", "tr": "Kayıt" },
       "title": { "en": "Save your seat", "tr": "Yerini ayırt" },
       "intro": {
-        "en": "Participation is free but seats are limited. Fill in the form below; accepted participants are confirmed by e-mail.",
-        "tr": "Katılım ücretsizdir ancak kontenjan sınırlıdır. Aşağıdaki formu doldurun; kabul edilen katılımcılara e-posta ile onay gönderilir."
+        "en": "Participation is free but seats are limited. Click the button to fill in the registration form; accepted participants are confirmed by e-mail.",
+        "tr": "Katılım ücretsizdir ancak kontenjan sınırlıdır. Kayıt formunu doldurmak için düğmeye tıklayın; kabul edilen katılımcılara e-posta ile onay gönderilir."
       },
       "opens": "2026-09-21",
       "closes": "2026-10-16",
       "status": "auto",
-      "formUrl": "https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_GOOGLE_FORM_ID/viewform",
-      "embed": true,
+      "formUrl": "https://forms.gle/tCiq3mPdr6U6o4Xf6",
+      "embed": false,
       "embedHeight": 1500,
       "eligibility": [
         { "en": "Open to undergraduate and graduate students from any university in Türkiye.", "tr": "Türkiye'deki tüm üniversitelerin lisans ve lisansüstü öğrencilerine açıktır." },
