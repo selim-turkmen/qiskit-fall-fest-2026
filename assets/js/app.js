@@ -13,7 +13,7 @@
     en: {
       register: "Register", program: "Program", menu: "Menu",
       days: "Days", hours: "Hours", minutes: "Min", seconds: "Sec",
-      countdownTo: "Countdown to day 1", happeningNow: "Happening now — welcome!",
+      countdownTo: "Countdown to the event", happeningNow: "Happening now — welcome!",
       finished: "The event has ended. See you at the next one!",
       addToCalendar: "Add to Google Calendar", openMaps: "Open in Google Maps",
       regOpen: "Registration is open", regSoon: "Registration opens soon", regClosed: "Registration is closed",
@@ -29,7 +29,7 @@
     tr: {
       register: "Kayıt ol", program: "Program", menu: "Menü",
       days: "Gün", hours: "Saat", minutes: "Dk", seconds: "Sn",
-      countdownTo: "1. güne geri sayım", happeningNow: "Şu anda devam ediyor — hoş geldiniz!",
+      countdownTo: "Etkinliğe geri sayım", happeningNow: "Şu anda devam ediyor — hoş geldiniz!",
       finished: "Etkinlik sona erdi. Bir sonrakinde görüşmek üzere!",
       addToCalendar: "Google Takvim'e ekle", openMaps: "Google Haritalar'da aç",
       regOpen: "Kayıtlar açık", regSoon: "Kayıtlar yakında açılıyor", regClosed: "Kayıtlar kapandı",
@@ -304,8 +304,8 @@
     let activeIdx = days.findIndex((d) => dayState(d.date) === "today");
     if (activeIdx < 0) activeIdx = Math.max(0, days.findIndex((d) => dayState(d.date) !== "past"));
     return `${sectionHead(s)}
-      <div class="tabs" role="tablist">${days.map((d, i) => `
-        <button class="tab" role="tab" type="button" data-tab="${i}" aria-selected="${i === activeIdx}" aria-controls="day-${i}">${esc(t(d.label))}<small>${esc(fmtLong(d.date))}</small></button>`).join("")}</div>
+      ${days.length > 1 ? `<div class="tabs" role="tablist">${days.map((d, i) => `
+        <button class="tab" role="tab" type="button" data-tab="${i}" aria-selected="${i === activeIdx}" aria-controls="day-${i}">${esc(t(d.label))}<small>${esc(fmtLong(d.date))}</small></button>`).join("")}</div>` : ""}
       ${days.map((d, i) => `<div class="day-panel" id="day-${i}" role="tabpanel" ${i === activeIdx ? "" : "hidden"}>
         <ol class="sched">${(d.items || []).map((it) => `
           <li class="${esc(it.type || "")}">
