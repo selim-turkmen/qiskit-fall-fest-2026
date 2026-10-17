@@ -190,7 +190,7 @@ window.SITE_CONTENT = {
             "en": "Registration deadline",
             "tr": "Son kayıt tarihi"
           },
-          "date": "2026-10-16",
+          "date": "2026-10-24",
           "time": "23:59",
           "note": {
             "en": "Online registration form (Google Forms)",
@@ -495,8 +495,8 @@ window.SITE_CONTENT = {
         "en": "Participation is free. Click the button to fill in the registration form.",
         "tr": "Katılım ücretsizdir. Kayıt formunu doldurmak için düğmeye tıklayın."
       },
-      "opens": "2026-09-21",
-      "closes": "2026-10-16",
+      "opens": "",
+      "closes": "2026-10-24",
       "status": "auto",
       "formUrl": "https://forms.gle/tCiq3mPdr6U6o4Xf6",
       "embed": false,
